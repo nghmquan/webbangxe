@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+</head>
+<div layout:fragment="headers">
+    <div class="grid">
+        <nav class="header__navbar">
+            <ul class="header__navbar--list">
+                <li class="header__navbar--item header__navbar--item-has-qr header__navbar--item--separate">
+                    <a style="text-decoration:none;color: var(--primary-color);" href="/admin" sec:authorize="hasAnyAuthority('ADMIN')">Kênh người bán</a>
+                </li>
+                <li class="header__navbar--item header__navbar--item-has-qr header__navbar--item--separate">
+                    Tải ứng dụng
+                    <div class="header__qr">
+                        <img th:src="@{/asset/img/shoppe.png}" alt="QR code" class="header__qr-img">
+                        <div class="header__qr-app">
+                            <a href=""class="header__qr-download-link" style="margin-left: 11px"><img th:src="@{/asset/img/gg_play.png}" alt="" class="header__qr-download-img"></a>
+                            <a href="" class="header__qr-download-link" style="margin-right: 11px"><img th:src="@{/asset/img/app_store.png}" alt="" class="header__qr-download-img"></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="header__navbar--item">
+                    <span class="header__navbar--title--no-pointer">Kết nối</span>
+                    <a href="" class="header__navbar-icon-link">
+                        <i class="header__navbar-icon fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="" class="header__navbar-icon-link">
+                        <i class="header__navbar-icon fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="" class="header__navbar-icon-link">
+                        <i class="header__navbar-icon fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="header__navbar--list">
+                <li class="header__navbar--item header__navbar--item--has-notify">
+                    <a href="" class="header__navbar-item-link">
+                        <i class="header__navbar-icon fa-solid fa-globe"></i>
+                        Ngôn ngữ
+                    </a>
+                    <div class="header__wolrd">
+                        <header class="header__wolrd-header">
+                            <div class="header__wolrd-header--stranlate">
+                                <img th:src="@{/asset/img/VN.png}" alt="" class="header__wolrd-header--stranlate-img">
+                                <h3>Tiếng Việt</h3>
+                            </div>
+
+                            <div class="header__wolrd-header--stranlate header__wolrd-header--stranlate-sepatate">
+                                <img th:src="@{/asset/img/USA.png}" alt="" class="header__wolrd-header--stranlate-img">
+                                <h3>Tiếng Anh</h3>
+                            </div>
+
+                        </header>
+
+                    </div>
+                </li>
+                <li class="header__navbar--item header__navbar--item--has-notify">
+                    <a href="" class="header__navbar-item-link">
+                        <i class="header__navbar-icon fa-regular fa-bell"></i>
+                        Thông báo
+                    </a>
+                    <div class="header__notifi">
+                        <header class="header__notifi-header">
+                            <h3>Thông báo mới nhận</h3>
+                        </header>
+                        <ul class="header__notifi-list">
+                            <li class="header__notifi-items header__notifi-items--view">
+                                <a href="" class="header__notifi-link">
+                                    <img th:src="@{/asset/img/650se.jpg}" alt="" class="header__notifi-img">
+                                    <div class="header__notifi-body">
+                                        <span class="header__notifi-name">NINJA 650 SE</span>
+                                        <span class="header__notifi-description">Mẫu xe Kawasaki Ninja 650 được sinh ra để tiếp tục làm rạng danh dòng mô tô thể thao Ninja.</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="header__notifi-items header__notifi-items--view">
+                                <a href="" class="header__notifi-link">
+                                    <img th:src="@{/asset/img/H2.jpg}" alt="" class="header__notifi-img">
+                                    <div class="header__notifi-body">
+                                        <span class="header__notifi-name">Z650 SE ABS</span>
+                                        <span class="header__notifi-description">Phong cách Sugomi nổi bật, khả năng điều khiển dễ dàng cùng sức mạnh dễ tiếp cận dã gợi lên tinh thần của Kawasaki Z</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="header__notifi-items header__notifi-items--view">
+                                <a href="" class="header__notifi-link">
+                                    <img th:src="@{/asset/img/ZH2.jpg}" alt="" class="header__notifi-img">
+                                    <div class="header__notifi-body">
+                                        <span class="header__notifi-name">ZH2 SE</span>
+                                        <span class="header__notifi-description">Khối động cơ 998 cm³ trên Z H2 đã được nâng lên tầm cao mới với hệ thống Siêu nạp như trên mẫu xe Ninja H2 vô song.</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <footer class="header__noti-footer">
+                            <a href="" class="header__noti-footer-btn">
+                                Xem tất cả
+                            </a>
+                        </footer>
+                    </div>
+                </li>
+                <li class="header__navbar--item">
+                    <a href="" class="header__navbar-item-link">
+                        <i class="header__navbar-icon fa-regular fa-circle-question"></i>
+                        Trợ giúp
+                    </a>
+                </li>
+                <li class="header__navbar--item header__navbar--item--bold header__navbar--item--separate" sec:authorize="isAuthenticated()">
+                    <a style="text-decoration:none;color: var(--primary-color);" href="" sec:authentication="name"></a>
+                </li>
+
+                <li class="header__navbar--item header__navbar--item--bold" sec:authorize="isAuthenticated()">
+                    <a style="text-decoration:none;color: var(--primary-color);" href="/logout">Đăng xuất</a>
+                </li>
+
+                <li class="header__navbar--item header__navbar--item--bold header__navbar--item--separate" sec:authorize="isAnonymous()">
+                    <a style="text-decoration:none;color: var(--primary-color);" href="/html/register.html">Đăng ký</a>
+                </li>
+
+                <li class="header__navbar--item header__navbar--item--bold" sec:authorize="isAnonymous()">
+                    <a style="text-decoration:none;color: var(--primary-color);" href="/html/login.html">Đăng nhập</a>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- header-with-search -->
+        <div class="header-with-search">
+            <div class="header__logo">
+                <a th:href="@{/}">
+                    <img th:src="@{/asset/img/Vector.png}" alt="" class="header__logo-img">
+                </a>
+
+            </div>
+
+            <div class="header__search">
+                <!-- Lịch sử tìm kiếm -->
+                <div class="header__search-input-body">
+                    <input type="text" name="" id="" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm">
+                    <div class="header__search-history">
+                        <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+                        <ul class="header__search-history-list">
+                            <li class="header__search-history-item"><a href="" >CBR150R</a></li>
+                            <li class="header__search-history-item"><a href="" >R15V3</a></li>
+                            <li class="header__search-history-item"><a href="" >R15M</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="header__search-btn">
+                    <i style="width: 100%;height:100%;line-height: 34px;" class="header__search-btn-icon fa-sharp fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <!-- Icon shopping -->
+            <div class="header__cart">
+                <div class="header__cart-body">
+                    <i class="header__cart-icon fa-solid fa-cart-shopping"><img th:src="@{/asset/img/no_cart.png}" width="50px"></i>
+<!--                     <span class="header__cart-notice-3"></span>-->
+                    <!-- NO CART: header__cart-list--no-cart -->
+                    <div class="header__cart-list header__cart-list--no-cart">
+                        <img th:src="@{/asset/img/no_cart.png}" alt="" class="header__cart-no-cart-img">
+                        <span class="header__cart-list--no-cart-no-product">Chưa có sản phẩm</span>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</html>

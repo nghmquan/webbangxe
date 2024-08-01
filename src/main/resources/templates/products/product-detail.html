@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/manager_product.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/asset/fontawesome-free-6.2.0-web/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <title>Layout</title>
+</head>
+<body>
+<header class="header">
+    <div layout:include="layout/menu :: headers"></div>
+</header>
+<div class="main__container">
+    <div class="grid">
+
+            <div style="padding-top: 0px;" class="grid__row app__content">
+                <div class="grid__column-12">
+                    <nav class="category">
+                        <div class="category__img">
+                            <div class="category__text">
+                                <div class="category__text-heading" th:text="${product.name}"></div>
+                                <div class="category__text-body">
+                                    <div class="category__text-body--price">
+                                        <span class="category__text-body-text--price" th:text="${product.name}"></span>
+                                        <span class="category__text-body-des--price">Giá tiêu chuẩn</span>
+                                    </div>
+
+                                    <div class="category__text-body--price">
+                                        <span class="category__text-body-text--price" th:text="${product.capacity}"></span>
+                                        <span class="category__text-body-des--price">Công suất</span>
+                                    </div>
+
+                                    <div class="category__text-body--price--no-border">
+                                        <span class="category__text-body-text--price" th:text="${product.maxSpeed}"></span>
+                                        <span class="category__text-body-des--price">Tăng tốc từ 0 - 100km/giờ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <div class="category__detail">
+                        <div class="infor__product">
+                            <div class="infor__product-heading" th:text="${product.name}"></div>
+                            <div class="infor__product-sub-title" th:text="'Giá tiêu chuẩn: ' + ${product.price}"></div>
+                            <div class="infor__product-description">
+                                *Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt, thuế gia trị gia tăng và gói <br>
+                                dịch vụ địa phương. Bảng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời
+                                điểm mà không báo trước.
+                            </div>
+                            <div class="infor__product-introduce">
+                                <div class="infor__product-introduce-list">
+                                    <span class="infor__product-introduce-item-speed" th:text="${product.capacity}"></span>
+                                    <span class="infor__product-introduce-item-text">Công suất</span>
+                                </div>
+
+                                <div class="infor__product-introduce-list">
+                                    <span class="infor__product-introduce-item-speed" th:text="${product.maxSpeed}"></span>
+                                    <span class="infor__product-introduce-item-text">Tăng tốc từ 0 - 100km/giờ</span>
+                                </div>
+
+                                <div class="infor__product-introduce-list--no-border">
+                                    <span class="infor__product-introduce-item-speed" th:text="${product.consume}"></span>
+                                    <span class="infor__product-introduce-item-text">Tiêu thụ nhiên liệu</span>
+                                </div>
+                            </div>
+                        </div>
+                        <form th:action="@{/cart/add}" method="post" sec:authorize="isAuthenticated()">
+                        <div class="description__product">
+                            <h3 class="description__product-heading">Thông số kỹ thuật</h3>
+                            <div class="description__product-body">
+                                <div class="description__product-body-img-product">
+                                    <div class="description__product-length-top"><span>Cao : 1.298 mm</span></div>
+                                    <img src="/asset/img/porches.jpg" th:src="@{/{image}(image=${product.image})}" alt="" class="description__product-img">
+                                    <div class="description__product-length--basic">
+                                        Chiều dài cơ sở : 2.450 mm
+                                    </div>
+                                    <div class="description__product-length">
+                                        Dài : 4.519 mm
+                                    </div>
+
+                                    <div class="description__product-img-list">
+                                        <div class="description__product-img-items">
+                                            <img th:src="@{/{image}(image=${product.image})}" alt="" class="description__product-img-item">
+                                        </div>
+
+                                        <div class="description__product-img-items">
+                                            <img th:src="@{/{image}(image=${product.image})}" alt="" class="description__product-img-item">
+                                        </div>
+
+                                        <div class="description__product-img-items">
+                                            <img th:src="@{/{image}(image=${product.image})}" alt="" class="description__product-img-item">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="description__product-body-des-product">
+                                    <div class="description__product-body-des-list">
+                                        <span class="description__product-body-des-item" >Công suất</span>
+                                        <span class="description__product-body-des-item" th:text="${product.capacity}"></span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list">
+                                        <span class="description__product-body-des-item">Mô men xoắn cực đại </span>
+                                        <span class="description__product-body-des-item">450 Nm</span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list">
+                                        <span class="description__product-body-des-item" >Tăng tốc từ 0 - 100 km/giờ (0-62 dặm/giờ)</span>
+                                        <span class="description__product-body-des-item">4.2 giây</span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list">
+                                        <span class="description__product-body-des-item" th:text="${product.maxSpeed}"></span>
+                                        <span class="description__product-body-des-item">293 km/giờ</span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list">
+                                        <span class="description__product-body-des-item">Tiêu thụ nhiên liệu kết hợp(lít/100km)</span>
+                                        <span class="description__product-body-des-item"th:text="${product.consume}"></span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list">
+                                        <span class="description__product-body-des-item">Lượng khí thải CO2(g/km)</span>
+                                        <span class="description__product-body-des-item">215</span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list--no-border">
+                                        <span class="description__product-body-des-item">Giá tiêu chuẩn</span>
+                                        <span class="description__product-body-des-item" th:text="'Giá tiêu chuẩn: ' + ${product.price}+ ' VNĐ'"></span>
+                                    </div>
+
+                                    <div class="description__product-body-des-list">
+                                            <span style="font-size: 1.2rem;" class="description__product-body-des-item">
+                                                Giá tiêu chuẩn bao gồm thuế nhập khẩu, thuế tiêu thụ đặc biệt, thuế gia trị gia tăng và gói
+                                                dịch vụ địa phương. Bảng giá, thông số kỹ thuật và hình ảnh có thể thay đổi theo từng thời
+                                                điểm mà không báo trước.
+                                            </span>
+                                    </div>
+                                    <div class="description__product-btn">
+                                        <input type="hidden" th:value="${product.id}" name="productId"/>
+                                        <input type="hidden" name="quantity" value="1"/>
+                                        <button type="submit" class="description__product-body-des-btn-buy">mua</button>
+                                        <i class="description__product-body-des-icon fa-solid fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <div class="other__product">
+                            <h3 class="other__product-heading">Các dòng xe khác</h3>
+                            <div class="other__product-body">
+                                <div class="other__product-body-item">
+                                    <img src="/asset/img/other__product-porches--1.jpg" alt="" class="other__product-body-item-img">
+                                    <span class="other__product-body-item-text">718 Cayman</span>
+                                    <span class="other__product-body-item-sub-text">Giá tiêu chuẩn : 6.920.000.000 VNĐ</span>
+                                </div>
+
+                                <div class="other__product-body-item">
+                                    <img src="/asset/img/other__product-porches--2.jpg" alt="" class="other__product-body-item-img">
+                                    <span class="other__product-body-item-text">718 Boster T</span>
+                                    <span class="other__product-body-item-sub-text">Giá tiêu chuẩn : 4.210.000.000 VNĐ</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <div class="footer">
+                        <div class="footer__body">
+                            <div class="about__us">
+                                <h3 class="about__us-heading">Về MOTOS</h3>
+                                <div class="about__us-list">
+                                    <span class="about__us-item">Giới thiệu về MOTOS</span>
+                                    <span class="about__us-item">Điều khoản</span>
+                                    <span class="about__us-item">Tuyển dụng</span>
+                                    <span class="about__us-item">Chính hãng</span>
+                                    <span class="about__us-item">Liên hệ với truyền thông</span>
+                                </div>
+                            </div>
+
+                            <div class="about__us">
+                                <h3 class="about__us-heading">Thanh toán</h3>
+                                <div class="about__us-list">
+                                    <img src="/asset/img/visa.png" alt="" class="about__us-img">
+                                    <img src="/asset/img/mastercard.png" alt="" class="about__us-img">
+                                </div>
+                            </div>
+
+                            <div class="about__us">
+                                <h3 class="about__us-heading">Theo dõi chúng tôi trên</h3>
+                                <div class="about__us-list">
+                                        <span class="about__us-item">
+                                            <i class="about__us-item-icon fa-brands fa-facebook"></i>
+                                            <a href="">Facebook</a>
+                                        </span>
+                                    <span class="about__us-item">
+                                            <i class="about__us-item-icon fa-brands fa-instagram"></i>
+                                            <a href="">Instagram</a>
+                                        </span>
+                                    <span class="about__us-item">
+                                            <i class="about__us-item-icon fa-brands fa-twitter"></i>
+                                            <a href="">Twitter</a>
+                                        </span>
+                                </div>
+                            </div>
+
+                            <div class="about__us">
+                                <h3 class="about__us-heading">Tải ứng dụng ngay</h3>
+                                <div class="about__us-list">
+                                    <div class="about__us-list-body">
+                                        <img src="/asset/img/shoppe.png" alt="" class="about__us-list-QR">
+                                        <div class="about__us-list-body-sub-menu">
+                                            <img src="/asset/img/app_store.png" alt="" class="about__us-list-app">
+                                            <img src="/asset/img/gg_play.png" alt="" class="about__us-list-app">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+
+
+</footer>
+</body>
+</html>

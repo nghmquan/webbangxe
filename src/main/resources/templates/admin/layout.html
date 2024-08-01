@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/admin_product-kenhnguoiban.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/asset/font/fontawesome-free-6.2.0-web/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/icon/themify-icons/themify-icons.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}"/>
+    <title>Document</title>
+</head>
+<body>
+<div class="main">
+    <header class="header">
+        <div layout:include="layout/menu :: headers"></div>
+    </header>
+    <div class="main__container">
+        <div class="grid">
+            <div class="grid__row app__content">
+                <div class="grid__column-12">
+                    <nav class="category">
+                        <h3 class="category__heading"><span>Motos</span> <span style="color: #fff;"> Kênh người bán</span></h3>
+                    </nav>
+                </div>
+
+                <div class="grid_2 grid__column-2">
+                    <div class="infor__product">
+                        <div class="infor__product-transfer">
+                            <div class="infor__product-manager">
+                                <i class="infor__product-manager-icon fa-solid fa-bag-shopping"></i>
+                                <span class="infor__product-manager-text"><a th:href="@{/products}">Quản lý sản phẩm</a></span>
+                                <i class="infor__product-manager-icon-cher fa-solid fa-chevron-up"></i>
+                                <ul class="infor__product-manager-menu">
+                                    <li class="category-item category-item--active">
+                                        <a th:href="@{/products/add}" class="category-item__link">Thêm sản phẩm</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="infor__product-manager">
+                                <i class="infor__product-manager-icon fa-solid fa-bag-shopping"></i>
+                                <span class="infor__product-manager-text"><a th:href="@{/categories}">Quản lý danh mục</a></span>
+                                <i class="infor__product-manager-icon-cher fa-solid fa-chevron-up"></i>
+                                <ul class="infor__product-manager-menu">
+                                    <li class="category-item category-item--active">
+                                        <a th:href="@{/categories/add}" class="category-item__link">Thêm danh mục</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="infor__product-manager">
+                                <i class="infor__product-manager-icon fa-solid fa-bag-shopping"></i>
+                                <span class="infor__product-manager-text"><a th:href="@{/orders}">Quản lý hàng khách</a></span>
+                                <i class="infor__product-manager-icon-cher fa-solid fa-chevron-up"></i>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid_10 grid__column-10">
+                    <div class="basic__infor">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+</div>
+</div>
+</body>
+</html>

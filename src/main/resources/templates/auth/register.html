@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/base.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/responsive.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{asset/fontawesome-free-6.2.0-web/css/all.min.css}"/>
+</head>
+<body>
+<div class="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__body">
+
+        <div class="auth-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Đăng ký</h3>
+                    <span class="auth-form__switch-form"><a class="auth-form__switch-form" th:href="@{/login}">Đăng nhập</a></span>
+                </div>
+                <form th:action="@{/register}" method="post">
+                    <div th:if="${errors}" class="alert alert-danger justify-content-center" role="alert">
+                        <ul>
+                            <li th:each="error : ${errors}" th:text="${error}" class="text-danger text-start"></li>
+                        </ul>
+                    </div>
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="email" name="email" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" id="username" name="username" placeholder="Username">
+                        </div>
+
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" id="password" name="password" placeholder="Mật khẩu của bạn">
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc đăng ký, bạn đã đồng ý với Shopee về
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                        </p>
+                    </div>
+
+                    <div class="auth-form__controls">
+                        <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        <button class="btn btn--primary">ĐĂNG KÝ</button>
+                    </div>
+
+                </div>
+
+                <div class="auth-form__social">
+                    <a href="" class="auth-form__social--facebook btn btn--size-s btn--width-icon">
+                        <i class="auth-form__social-icon fa-brands fa-square-facebook"></i>
+                        <span class="auth-form__social-title">
+                            Kết nối với Facebook
+                        </span>
+                    </a>
+
+                    <a href="" class="auth-form__social--google btn btn--size-s btn--width-icon">
+                        <i class="auth-form__social-icon fa-brands fa-square-google-plus"></i>
+                        <span class="auth-form__social-title">
+                            Kết nối với Google
+                        </span>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+</body>
+</html>

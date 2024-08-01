@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/base.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/responsive.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{asset/fontawesome-free-6.2.0-web/css/all.min.css}"/>
+    <title>Layout</title>
+</head>
+<body>
+<div class="main">
+    <header class="header">
+        <div layout:include="layout/menu :: headers"></div>
+    </header>
+
+
+    </div>
+    <div class="advertisement">
+        <div class="advertisement__header">
+            <img src="asset/img/advertise.jpg" alt="" class="advertisement__header-img">
+        </div>
+        <div class="advertisement__body">
+            <button class="advertisement__body-velhice">
+                <img src="asset/img/moto.png" alt="" class="advertisement__body-velhice--moto">
+                <div class="advertisement__body-velhice-des">
+                    <span>Xe motor</span>
+                </div>
+            </button>
+            <button class="advertisement__body-velhice">
+                <img src="asset/img/car.png" alt="" class="advertisement__body-velhice--car">
+                <div class="advertisement__body-velhice-des">
+                    <span>Xe hơi</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="main__container">
+        <div class="grid">
+            <div class="grid__row app__content">
+                <div class="grid__column-12">
+                    <div class="category">
+                        <div class="category__head">
+                            <h3 class="category__head-heading">DANH MỤC</h3>
+                        </div>
+
+                        <div class="category__body">
+                            <div class="category__body-list--top">
+                                <div class="category__body-item--top" th:each="category : ${categories}">
+                                    <img th:src="@{|${category.imageName}|}" alt="" class="category__body-item-img--top">
+                                    <span class="category__body-item-text--top" th:text="${category.name}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category__second">
+                        <div class="category__second-heading">
+                            <h3 class="category__second-heading-text">XE OTO</h3>
+                        </div>
+                    </div>
+
+                    <div class="category__third-body-list">
+                        <div class="category__third-body-item" th:each="product : ${products}">
+
+                                <div class="category__third-body-item-img">
+                                    <a href=""><img class="category__third-body-item--img" th:src="@{{filename}(filename=${product.image})}" alt=""/></a>
+                                </div>
+                                <div class="category__third-body-item-icon">
+                                    <i class="category__third-body-item-icon--heart category__third-body-item-icon--heart--red fa-regular fa-heart"></i>
+                                    <div class="category__third-body-item-icon-view">
+                                        <i class="category__third-body-item-icon--seen fa-regular fa-eye"></i>
+                                        <span>271</span>
+                                    </div>
+                                </div>
+                                <div class="category__third-body-item-text">
+                                    <span class="category__third-body-item-text--price" th:text="${product.name}"></span>
+                                    <span class="category__third-body-item-text--price-basic" th:text="${product.price}"></span>
+                                </div>
+
+                                <a th:href="@{/products/{ProductId}(ProductId=${product.id})}" class="category__third-body-item-btn">
+                                    <span class="category__third-body-item-btn-text">Khám phá </span>
+                                    <i class="category__third-body-item-btn-icon fa-solid fa-arrow-right"></i>
+                                </a>
+
+                        </div>
+                    </div>
+                    <div class="view__more">
+                        <a href="" class="view__more-btn">XEM THÊM</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<footer layout:include="layout/footer :: footers">
+
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+  <link rel="stylesheet" type="text/css" th:href="@{css/cart.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{css/base.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{css/responsive.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{asset/fontawesome-free-6.2.0-web/css/all.min.css}"/>
+  <title>Layout</title>
+</head>
+<body>
+<div class="main">
+  <header class="header">
+    <div layout:include="layout/menu :: headers"></div>
+  </header>
+<div class="main__container">
+  <div class="grid">
+    <div class="grid__row app__content">
+      <div class="grid__12 grid__column-12">
+        <nav class="category">
+          <h3 class="category__heading">
+            Xem giỏ hàng
+          </h3>
+        </nav>
+      </div>
+
+      <div class="grid__12 grid__column-12">
+        <nav class="category__check">
+          <div class="category__check--body">
+            <input type="checkbox" name=""  class="category__check--inp">
+            <span class="category__check--product">Mặt hàng</span>
+          </div>
+
+          <div class="category__check--category">
+            <span style="padding-left: 25px;" class="category__check--categorys">Đơn giá</span>
+            <span class="category__check--categorys">Số lượng</span>
+            <span class="category__check--categorys">Số tiền</span>
+            <span class="category__check--categorys">Thao tác</span>
+          </div>
+        </nav>
+      </div>
+      <div th:if="${cartItems.isEmpty()}" class="alert alert-info">Giỏ hàng của bạn đang trống.</div>
+      <div class="grid__12 grid__column-12" th:each="item : ${cartItems}">
+        <nav class="category__check">
+          <div class="category__check--body-product">
+            <input type="checkbox" name="" class="category__check--inp">
+            <img th:src="@{/{filename}(filename=${item.product.image})}" alt="" class="category__check-img">
+            <span class="category__check-text" th:text="${item.product.name}"></span>
+          </div>
+          <div class="category__check--category--product">
+            <span class="category__check--categorys" th:text="${item.product.price}"> VNĐ</span>
+            <span class="category__check--categorys" th:text="${item.quantity}"></span>
+            <span style="color: var(--primary-color);" class="category__check--categorys" th:text="${item.quantity * item.product.price}"> VNĐ</span>
+            <span class="category__check--categorys"><a th:href="@{/cart/remove/{productId}(productId=${item.product.id})}">Xóa</a></span>
+            <span class="category__check--categorys"><a th:href="@{/order/checkout}" class="btn btn-primary mb-3">Mua Ngay</a></span>
+          </div>
+        </nav>
+      </div>
+
+<!--      <div class="grid__12 grid__column-12">-->
+<!--        <nav class="category__check">-->
+<!--          <div class="category__check&#45;&#45;body-product">-->
+<!--            <input type="checkbox" name="" id="" class="category__check&#45;&#45;inp">-->
+<!--            <img src="/asset/img/porches.jpg" alt="" class="category__check-img">-->
+<!--            <span class="category__check-text">Ferrari 911 Carrera</span>-->
+<!--          </div>-->
+
+<!--          <div class="category__check&#45;&#45;category&#45;&#45;product">-->
+<!--            <span class="category__check&#45;&#45;categorys">6.920.000.000 VNĐ</span>-->
+<!--            <span class="category__check&#45;&#45;categorys">1</span>-->
+<!--            <span style="color: var(&#45;&#45;primary-color);" class="category__check&#45;&#45;categorys">6.920.000.000 VNĐ</span>-->
+<!--            <span class="category__check&#45;&#45;categorys"><a href="category__check&#45;&#45;categorys">Xóa</a></span>-->
+<!--          </div>-->
+<!--        </nav>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+  <footer layout:include="layout/footer :: footers">
+
+  </footer>
+</div>
+
+</body>
+</html>

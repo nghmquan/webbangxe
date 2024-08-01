@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/admin__product-detail.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/asset/font/fontawesome-free-6.2.0-web/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/icon/themify-icons/themify-icons.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}"/>
+    <title>Document</title>
+</head>
+<body>
+<header class="header">
+    <div layout:include="layout/menu :: headers"></div>
+</header>
+<form th:action="@{/products/save}" th:object="${product}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="${product.id}">
+    <div class="grid_10 grid__column-10">
+        <div class="basic__infor">
+            <h3 class="basic__infor-heading">Thông tin chi tiết</h3>
+            <div class="basic__infor-select">
+                <div class="select__infor">
+                    <span class="select__infor-text">*Thương hiệu</span>
+                    <div style="
+    position: relative;
+    left: 130px;
+">
+                        <select id="category" th:field="*{category.id}" class="select__infor-list"  required>
+                            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" class="select__infor-item"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="select__infor">
+                    <span class="select__infor-text">*Tên xe</span>
+                    <input type="text" id="name" th:field="*{name}" class="select__infor-inp" required/>
+                </div>
+
+                <div class="select__infor">
+                    <span class="select__infor-text">*Giá</span>
+                    <input type="number" id="price" th:field="*{price}" class="select__infor-inp" required/>
+                </div>
+
+                <div class="select__infor">
+                    <span class="select__infor-text">*Công suất</span>
+                    <input type="number" id="capacity" th:field="*{capacity}" class="select__infor-inp" required/>
+                </div>
+
+                <div class="select__infor">
+                    <span class="select__infor-text">*Tốc độ tối đa</span>
+                    <input type="number" id="maxSpeed" th:field="*{maxSpeed}" class="select__infor-inp" required/>
+                </div>
+
+                <div class="select__infor">
+                    <span class="select__infor-text">*Tiêu thụ</span>
+                    <input type="number" id="consume" th:field="*{consume}" class="select__infor-inp" required/>
+                </div>
+                <div class="basic__infor-upload">
+                    <div class="card">
+                        <h3>Tải hình ảnh</h3>
+                        <div class="drop_box">
+                            <header>
+                                <h4>Chọn tệp tin tại đây</h4>
+                            </header>
+                            <div>
+                                <label for="file">Image:</label>
+                                <input type="file" id="file" name="file"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div style="position: relative;
+    left: 125px;">
+                <button type="submit" class="btn">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
